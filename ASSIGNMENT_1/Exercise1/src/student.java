@@ -4,7 +4,7 @@ public class student {
     String course;
     double[] quizscore = new double[15];
 
-    void student(int roll_no, String name, String course, double[] quizscore) {
+    public void student(int roll_no, String name, String course, double[] quizscore) {
 
         this.roll_no = roll_no;
         this.name = name;
@@ -15,12 +15,14 @@ public class student {
 
     public static void main(String[] args) {
 
-        // student dummy = new student();
-        // dummy.student(1,"Ayushi","PT", new double[]{1, 2, 3, 4, 5, 3, 2, 1, 4, 5, 6, 7, 8, 9, 4});
-        // System.out.println(java.util.Arrays.toString(dummy.quizscore));
+        //student dummy = new ptstudent();
+        //dummy.student(1,"Ayushi","PT", new double[]{1, 2, 3, 4, 5, 3, 2, 1, 4, 5, 6, 7, 8, 9, 4});
+        //System.out.println(dummy.course);
+        //System.out.println(java.util.Arrays.toString(dummy.quizscore));
+
         student[] arr = new student[20]; // int a = 10;
         for (int stdnum=0;stdnum<arr.length;stdnum++){
-            arr[stdnum]=new student();
+            arr[stdnum]=new ptstudent();
         }
         arr[0].student(1,"Ayushi","PT", new double[]{1, 2, 3, 4, 5, 3, 2, 1, 4, 5, 6, 7, 8, 9, 4});
         arr[1].student(2,"Nisha","FT", new double[]{3, 5, 7, 4, 2, 5, 2, 3, 5, 9, 3, 5, 4, 6, 7});
@@ -51,28 +53,26 @@ public class student {
         ssn.ftstudentscores();
 
 
-//
-//        for (int i=0; i<arr.length; i++){
-//            System.out.println("Student at"+i+":"+arr[i].roll_no +" "+ arr[i].name + " " + arr[i].course);
-//
-//            //calculate average score
-//
-//            ptstudent pt = new ptstudent();
-//            System.out.println("Average of quiz score is : "+ pt.avgquizscore());
-//        }
-
-
     }
 }
 
 class ptstudent extends student {
 
+    //String course = "PT";
+    //public void student(int roll_no, String name, String course, double[] quizscore) {
+    //    super.student(roll_no, name, this.course, quizscore);
+    //}
 
 }
 
 class ftstudent extends student {
 
     int ExamScore;
+
+    //String course = "FT";
+    //public void student(int roll_no, String name, String course, double[] quizscore) {
+    //    super.student(roll_no, name, this.course, quizscore);
+    //}
 
 }
 
@@ -93,7 +93,7 @@ class Session{
                 sumval = sumval + AllStudents[stdnum].quizscore[quiznum]; // stdnum = 0->19, quiznum = 0->15 ()
             }
         }
-        System.out.println(sumval/(AllStudents.length*AllStudents[0].quizscore.length));
+        System.out.println("Average class quiz score: " + sumval/(AllStudents.length*AllStudents[0].quizscore.length));
     }
 
     public void sortscore(){
@@ -103,7 +103,7 @@ class Session{
         {
             double[] newarr = AllStudents[stdnum].quizscore;
             java.util.Arrays.sort(newarr);
-            System.out.println("Student " + stdnum + " quizscores sorted: " + java.util.Arrays.toString(newarr));
+            System.out.println("Student " + stdnum + " quizscores (ascending): " + java.util.Arrays.toString(newarr));
 
         }
 
@@ -111,6 +111,7 @@ class Session{
 
     public void ptstudentnames(){
 
+        System.out.println("Names of PT students below:");
         for (int stdnum=0; stdnum<AllStudents.length; stdnum++) // Loop over all students
 
         {
@@ -124,11 +125,12 @@ class Session{
 
     public void ftstudentscores(){
 
+        System.out.println("Scores of FT students below:");
         for (int stdnum=0; stdnum<AllStudents.length; stdnum++) // Loop over all students
 
         {
             if(AllStudents[stdnum].course.equals("FT")){
-                System.out.println(java.util.Arrays.toString(AllStudents[stdnum].quizscore));
+                System.out.println(AllStudents[stdnum].name + "'s scores: " + java.util.Arrays.toString(AllStudents[stdnum].quizscore));
             }
 
         }
